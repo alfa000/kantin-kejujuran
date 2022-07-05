@@ -8,12 +8,24 @@
 
 <div class="container mb-5">
     <h2>Items</h2>
+
+    <div class="row mb-2">
+        <div class="col-md-5">
+            <select name="sort" id="sort" class="form-control">
+                <option value="dca" {{ request()->sort == 'dca' ? 'selected' : '' }}>Date Created (Ascending)</option>
+                <option value="dcd" {{ request()->sort == 'dcd' ? 'selected' : '' }}>Date Created (Descending)</option>
+                <option value="pna" {{ request()->sort == 'pna' ? 'selected' : '' }}>Product Name (Ascending)</option>
+                <option value="pnd" {{ request()->sort == 'pnd' ? 'selected' : '' }}>Product Name (Descending)</option>
+            </select>
+        </div>
+    </div>
+
     <div class="row">
         @forelse ($items as $item)
         <div class="col-md-4">
 
             <div class="card">
-                <img src="{{ asset('storage/'.$item->img) }}" class="card-img-top" alt="...">
+                <img src="{{ asset('storage/'.$item->img) }}" class="card-img-top" onerror="this.onerror=null;this.src='{{ asset('assets/img/food.png') }}';">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -46,3 +58,14 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#sort').change(function () {
+            location = '{{ route('home') }}?'+'sort='+$(this).val()
+        });
+    });
+
+</script>
+@endpush
