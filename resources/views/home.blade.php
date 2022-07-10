@@ -11,6 +11,7 @@
 
     <div class="row mb-2">
         <div class="col-md-5">
+            Order By:
             <select name="sort" id="sort" class="form-control">
                 <option value="dca" {{ request()->sort == 'dca' ? 'selected' : '' }}>Date Created (Ascending)</option>
                 <option value="dcd" {{ request()->sort == 'dcd' ? 'selected' : '' }}>Date Created (Descending)</option>
@@ -20,7 +21,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row align-items-center" style="min-height: calc(100vh - 533px)">
         @forelse ($items as $item)
         <div class="col-md-4">
 
@@ -53,7 +54,9 @@
             </div>
         </div>
         @empty
-            <p>No items</p>
+        <div class="col-md-12">
+            <p class="text-center">No items</p>
+        </div>
         @endforelse
     </div>
 </div>

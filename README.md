@@ -2,7 +2,7 @@
  Kantik Kejujuran merupakan web untuk kebutuhan seleksi Compfest SEA S14
 
 ## System Architecture
-- Backend : Laravel 8
+- Backend : Laravel 9
 - Frontend : HTML, CSS, Javascript(Jquery)
 - Database : Postgresql 11.5
 
