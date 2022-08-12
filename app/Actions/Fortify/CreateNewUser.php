@@ -21,13 +21,7 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'id' => ['required', 'max:5', 'min:5', Rule::unique('users'),
-                        function ($attribute, $value, $fail) {
-                            if (array_sum(str_split(substr($value, 0, 3))) != substr($value, 3, 2)) {
-                                $fail('The '.$attribute.' is invalid.');
-                            }
-                        },
-                    ],
+            'id' => ['required', 'max:5', 'min:5'],
             'name' => ['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
         ])->validate();
